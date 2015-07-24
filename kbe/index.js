@@ -23,9 +23,9 @@ process.title = 'term.js';
  */
 
 var stream;
-if (process.argv[2] === '--dump') {
-  stream = require('fs').createWriteStream(__dirname + '/dump.log');
-}
+//if (process.argv[2] === '--dump') {
+//  stream = require('fs').createWriteStream(__dirname + '/dump.log');
+//}
 
 /**
  * Open Terminal
@@ -100,7 +100,7 @@ var lockAddr = '';
 app.use(express.static(__dirname));
 app.use(terminal.middleware());
 
-if (!~process.argv.indexOf('-n')) {
+//if (!~process.argv.indexOf('-n')) {
   server.on('connection', function(socket) {
     var address = socket.remoteAddress;
     if (lockAddr === '') {
@@ -123,9 +123,12 @@ if (!~process.argv.indexOf('-n')) {
       console.log('Attempted connection from %s. Refused.', address);
     }*/
   });
-}
+//}
 
-server.listen(8080);
+var port = 8080;
+if (!isNaN(process.argv[2]))
+  port = 1*process.argv[2];
+server.listen(port);
 
 /**
  * Sockets
