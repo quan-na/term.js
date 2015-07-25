@@ -35,6 +35,8 @@
 <script src="term.js"></script>
 <script src="oskb.js"></script>
 <link href="oskb.css" rel="stylesheet" type="text/css"/>
+<div id="term-id"></div>
+<div id="oskb-id"></div>
 <script>
 ;(function() {
   window.onload = function() {
@@ -56,7 +58,7 @@
         document.title = title;
       });
 
-      term.open(document.body);
+      term.open(document.getElementById("term-id"));
 
       term.write('\x1b[36m (______ <\\-/> ______) \x1b[m\r\n');
       term.write('\x1b[36m /_.-=-.\\| " |/.-=-._\\ \x1b[m\r\n');
@@ -76,6 +78,7 @@
         term.destroy();
       });
     });
+    onScreenKb().render("oskb-id");
   };
 }).call(this);
 </script>
