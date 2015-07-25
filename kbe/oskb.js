@@ -193,44 +193,44 @@ var onScreenKb = function() {
           // Special keys
           switch(_kbLayout[i].special) {
             case 'control-c':
-              keyEle.addEventListener('click', function() {
+              keyEle.addEventListener('touchstart', function() {
                 _flashButton(this);
                 _termObj.keyDown({keyCode:67,ctrlKey:true});
               });
               break;
             case 'control-z':
-              keyEle.addEventListener('click', function() {
+              keyEle.addEventListener('touchstart', function() {
                 _flashButton(this);
                 _termObj.keyDown({keyCode:90,ctrlKey:true});
               });
               break;
             case 'control-g':
-              keyEle.addEventListener('click', function() {
+              keyEle.addEventListener('touchstart', function() {
                 _flashButton(this);
                 _termObj.keyDown({keyCode:71,ctrlKey:true});
               });
               break;
             case 'shift':
               _specialBtnLists.shift.push(keyEle);
-              keyEle.addEventListener('click', function() {
+              keyEle.addEventListener('touchstart', function() {
                 _changeSpecial('shift');
               });
               break;
             case 'ctrl':
               _specialBtnLists.ctrl.push(keyEle);
-              keyEle.addEventListener('click', function() {
+              keyEle.addEventListener('touchstart', function() {
                 _changeSpecial('ctrl');
               });
               break;
             case 'alt':
               _specialBtnLists.alt.push(keyEle);
-              keyEle.addEventListener('click', function() {
+              keyEle.addEventListener('touchstart', function() {
                 _changeSpecial('alt');
               });
               break;
             case 'caplock':
               _specialBtnLists.caplock.push(keyEle);
-              keyEle.addEventListener('click', function() {
+              keyEle.addEventListener('touchstart', function() {
                 _changeSpecial('caplock');
               });
               break;
@@ -238,7 +238,7 @@ var onScreenKb = function() {
               break;
             case 'meta':
               _specialBtnLists.meta.push(keyEle);
-              keyEle.addEventListener('click', function() {
+              keyEle.addEventListener('touchstart', function() {
                 _changeSpecial('meta');
               });
               break;
@@ -246,7 +246,7 @@ var onScreenKb = function() {
         } else if (typeof(_kbLayout[i].code) === 'number') {
           // Normal keys
           (function (kcode, chcode, offcode) {
-            keyEle.addEventListener('click', function() {
+            keyEle.addEventListener('touchstart', function() {
               _flashButton(this);
               var ev = _reflectSpecials({keyCode:kcode});
               _termObj.keyDown(ev);
