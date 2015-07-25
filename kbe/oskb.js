@@ -94,7 +94,7 @@ var onScreenKb = function() {
   var _termObj;
   var _flashButton = function(buttonEle) {
     buttonEle.style.backgroundColor = 'white';
-    setTimeout(function(){ buttonEle.style.backgroundColor = ''; }, 200);
+    window.setTimeout(function(){ buttonEle.style.backgroundColor = ''; }, 100);
   }
   var _specialBtnLists = {
     shift:[],

@@ -1,14 +1,17 @@
 <!doctype html>
-<title>term.js</title>
+<html>
+<head>
+<title>quanna's term.js</title>
 <!--
   term.js
   Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
 -->
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <style>
   html {
     background: #555;
   }
-
+/*
   .terminal {
     float: left;
     border: #000 solid 5px;
@@ -21,12 +24,14 @@
   .terminal-cursor {
     color: #000;
     background: #f0f0f0;
-  }
+  }*/
 </style>
 <script src="/socket.io/socket.io.js"></script>
 <script src="term.js"></script>
 <script src="oskb.js"></script>
 <link href="oskb.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
 <div id="oskb-id"></div>
 <script>
 ;(function() {
@@ -73,3 +78,5 @@
   };
 }).call(this);
 </script>
+</body>
+</html>
