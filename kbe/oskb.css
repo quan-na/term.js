@@ -6,19 +6,72 @@
 #keyboard {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 768px;
   list-style: none;
 }
 
-#keyboard li {
+#keyboard > li {
   float: left;
   margin: 0 5px 5px 0;
-  width: 40px;
+  width: 42px;
   height: 40px;
   line-height: 40px;
   text-align: center;
-  background: #fff;
+  background: rgba(55,55,55,.7);
+  color: rgb(200,200,255);
   border: 1px solid #f9f9f9;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
+}
+
+#keyboard > li > .off-glyph {
+  position:relative;
+  top:-12px;
+  font-size: smaller;
+  color:rgb(155,200,155);
+}
+
+#keyboard > li.function {
+  width:37px;
+  height:35px;
+}
+
+#keyboard > li.function.delete {
+  width:39px;
+}
+
+#keyboard > li.function.escape {
+  width:39px;
+}
+
+#keyboard > li.backspace {
+  width:59px;
+}
+
+#keyboard > li.tab {
+  width:59px;
+}
+
+#keyboard > li.caplock {
+  width:73px;
+}
+
+#keyboard > li.enter {
+  width:77px;
+}
+
+#keyboard > li.left-shift {
+  width:99px;
+}
+
+#keyboard > li.right-shift {
+  width:100px;
+}
+
+#keyboard > li.space {
+  width:255px;
+}
+
+#keyboard > li.arrow {
+  height:35px;
 }

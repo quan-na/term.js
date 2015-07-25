@@ -5,7 +5,7 @@ var onScreenKb = function() {
   var _self = {};
   var _element = document.body;
   var _kbLayout = [
-      {glyph:'ESC', special:'esc', css_class:'escape'},
+      {glyph:'esc', special:'esc', css_class:'escape function'},
       {glyph:'F1', special:'f1', css_class:'function'},
       {glyph:'F2', special:'f2', css_class:'function'},
       {glyph:'F3', special:'f3', css_class:'function'},
@@ -18,10 +18,10 @@ var onScreenKb = function() {
       {glyph:'F10', special:'f10', css_class:'function'},
       {glyph:'F11', special:'f11', css_class:'function'},
       {glyph:'F12', special:'f12', css_class:'function'},
-      {glyph:'PrnSrc', css_class:'not-used'},
-      {glyph:'Pause', css_class:'not-used'},
-      {glyph:'Ins', css_class:'not-used'},
-      {glyph:'Del', special:'del', css_class:'delete last-item'},
+      {glyph:'^C', css_class:'function'},
+      {glyph:'^Z', css_class:'function'},
+      {glyph:'^G', css_class:'function'},
+      {glyph:'Del', special:'del', css_class:'delete function'},
       {glyph:'`', code:0, off_glyph:'~', off_code:0, css_class:'symbol'},
       {glyph:'1', code:0, off_glyph:'!', off_code:0, css_class:'symbol'},
       {glyph:'2', code:0, off_glyph:'@', off_code:0, css_class:'symbol'},
@@ -36,7 +36,7 @@ var onScreenKb = function() {
       {glyph:'-', code:0, off_glyph:'_', off_code:0, css_class:'symbol'},
       {glyph:'=', code:0, off_glyph:'+', off_code:0, css_class:'symbol'},
       {glyph:'⌫', special:'bckspc', css_class:'backspace'},
-      {glyph:'Home', special:'home', css_class:'home last-item'},
+      {glyph:'Home', special:'home', css_class:'home'},
       {glyph:'Tab', special:'tab', css_class:'tab'},
       {glyph:'Q', code:0, css_class:'letter'},
       {glyph:'W', code:0, css_class:'letter'},
@@ -51,7 +51,7 @@ var onScreenKb = function() {
       {glyph:'[', code:0, off_glyph:'{', off_code:0, css_class:'symbol'},
       {glyph:']', code:0, off_glyph:'}', off_code:0, css_class:'symbol'},
       {glyph:'\\', code:0, off_glyph:'|', off_code:0, css_class:'symbol'},
-      {glyph:'PgUp', special:'pgup', css_class:'page-up last-item'},
+      {glyph:'PgUp', special:'pgup', css_class:'page-up'},
       {glyph:'Caplock', special:'caplock', css_class:'caplock'},
       {glyph:'A', code:0, css_class:'letter'},
       {glyph:'S', code:0, css_class:'letter'},
@@ -65,7 +65,7 @@ var onScreenKb = function() {
       {glyph:';', code:0, off_glyph:':', off_code:0, css_class:'symbol'},
       {glyph:'\'', code:0, off_glyph:'"', off_code:0, css_class:'symbol'},
       {glyph:'↵', special:'enter', css_class:'enter'},
-      {glyph:'PgDn', special:'pgdn', css_class:'page-down last-item'},
+      {glyph:'PgDn', special:'pgdn', css_class:'page-down'},
       {glyph:'Shift', special:'shift', css_class:'right-shift'},
       {glyph:'Z', code:0, css_class:'letter'},
       {glyph:'X', code:0, css_class:'letter'},
@@ -78,13 +78,14 @@ var onScreenKb = function() {
       {glyph:'.', code:0, off_glyph:'>', off_code:0, css_class:'symbol'},
       {glyph:'/', code:0, off_glyph:'?', off_code:0, css_class:'symbol'},
       {glyph:'Shift', special:'shift', css_class:'left-shift'},
-      {glyph:'Crtl', special:'crtl', css_class:'left-control'},
+      {glyph:'End', special:'end', css_class:'end'},
+      {glyph:'Ctrl', special:'ctrl', css_class:'right-control'},
       {glyph:'Fn', css_class:'not-used'},
-      {glyph:'Meta', css_class:'not-used'},
-      {glyph:'Alt', special:'alt', css_class:'left-alt'},
-      {glyph:'↔', special:'space', css_class:'space'},
+      {glyph:'⌘', css_class:'not-used'},
       {glyph:'Alt', special:'alt', css_class:'right-alt'},
-      {glyph:'Crtl', special:'crtl', css_class:'right-control'},
+      {glyph:'↔', special:'space', css_class:'space'},
+      {glyph:'Alt', special:'alt', css_class:'left-alt'},
+      {glyph:'Ctrl', special:'ctrl', css_class:'left-control'},
       {glyph:'←', special:'left', css_class:'arrow'},
       {glyph:'↓', special:'down', css_class:'arrow'},
       {glyph:'↑', special:'up', css_class:'arrow'},
@@ -105,10 +106,11 @@ var onScreenKb = function() {
     for (var i=0; i<_kbLayout.length; i++) {
       if (typeof(_kbLayout[i]) == 'object') {
         var keyEle = document.createElement("li");
+        keyEle.className = _kbLayout[i].css_class;
         keyEle.appendChild(document.createTextNode(_kbLayout[i].glyph));
         if (typeof(_kbLayout[i].off_glyph) == 'string') {
           var keyOffGlyph = document.createElement("span");
-          keyOffGlyph.class = "off-glyph";
+          keyOffGlyph.className = "off-glyph";
           keyOffGlyph.appendChild(document.createTextNode(_kbLayout[i].off_glyph));
           keyEle.appendChild(keyOffGlyph);
         }
