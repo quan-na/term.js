@@ -22,19 +22,19 @@ var onScreenKb = function() {
       {glyph:'^Z', special:'control-z', css_class:'function'},
       {glyph:'^G', special:'control-g', css_class:'function'},
       {glyph:'Del', code:46, css_class:'delete function'},
-      {glyph:'`', code:192, off_glyph:'~', css_class:'symbol'},
-      {glyph:'1', code:49, off_glyph:'!', css_class:'symbol'},
-      {glyph:'2', code:50, off_glyph:'@', css_class:'symbol'},
-      {glyph:'3', code:51, off_glyph:'#', css_class:'symbol'},
-      {glyph:'4', code:52, off_glyph:'$', css_class:'symbol'},
-      {glyph:'5', code:53, off_glyph:'%', css_class:'symbol'},
-      {glyph:'6', code:54, off_glyph:'^', css_class:'symbol'},
-      {glyph:'7', code:55, off_glyph:'&', css_class:'symbol'},
-      {glyph:'8', code:56, off_glyph:'*', css_class:'symbol'},
-      {glyph:'9', code:57, off_glyph:'(', css_class:'symbol'},
-      {glyph:'0', code:48, off_glyph:')', css_class:'symbol'},
-      {glyph:'-', code:173, off_glyph:'_', css_class:'symbol'},
-      {glyph:'=', code:61, off_glyph:'+', css_class:'symbol'},
+      {glyph:'`', code:192, char_code:96, off_glyph:'~', off_code:126, css_class:'symbol'},
+      {glyph:'1', code:49, off_glyph:'!', off_code:33, css_class:'symbol'},
+      {glyph:'2', code:50, off_glyph:'@', off_code:64, css_class:'symbol'},
+      {glyph:'3', code:51, off_glyph:'#', off_code:35, css_class:'symbol'},
+      {glyph:'4', code:52, off_glyph:'$', off_code:36, css_class:'symbol'},
+      {glyph:'5', code:53, off_glyph:'%', off_code:37, css_class:'symbol'},
+      {glyph:'6', code:54, off_glyph:'^', off_code:94, css_class:'symbol'},
+      {glyph:'7', code:55, off_glyph:'&', off_code:38, css_class:'symbol'},
+      {glyph:'8', code:56, off_glyph:'*', off_code:42, css_class:'symbol'},
+      {glyph:'9', code:57, off_glyph:'(', off_code:40, css_class:'symbol'},
+      {glyph:'0', code:48, off_glyph:')', off_code:41, css_class:'symbol'},
+      {glyph:'-', code:173, char_code:45, off_glyph:'_', off_code:95, css_class:'symbol'},
+      {glyph:'=', code:61, off_glyph:'+', off_code:43, css_class:'symbol'},
       {glyph:'⌫', code:8, css_class:'backspace'},
       {glyph:'Home', code:36, css_class:'home'},
       {glyph:'Tab', code:9, css_class:'tab'},
@@ -48,9 +48,9 @@ var onScreenKb = function() {
       {glyph:'I', code:73, css_class:'letter'},
       {glyph:'O', code:79, css_class:'letter'},
       {glyph:'P', code:80, css_class:'letter'},
-      {glyph:'[', code:219, off_glyph:'{', off_code:0, css_class:'symbol'},
-      {glyph:']', code:221, off_glyph:'}', off_code:0, css_class:'symbol'},
-      {glyph:'\\', code:220, off_glyph:'|', off_code:0, css_class:'symbol'},
+      {glyph:'[', code:219, char_code:91, off_glyph:'{', off_code:123, css_class:'symbol'},
+      {glyph:']', code:221, char_code:93, off_glyph:'}', off_code:125, css_class:'symbol'},
+      {glyph:'\\', code:220, char_code:92, off_glyph:'|', off_code:124, css_class:'symbol'},
       {glyph:'PgUp', code:33, css_class:'page-up'},
       {glyph:'Caplock', special:'caplock', css_class:'caplock'},
       {glyph:'A', code:65, css_class:'letter'},
@@ -62,8 +62,8 @@ var onScreenKb = function() {
       {glyph:'J', code:74, css_class:'letter'},
       {glyph:'K', code:75, css_class:'letter'},
       {glyph:'L', code:76, css_class:'letter'},
-      {glyph:';', code:0, off_glyph:':', off_code:0, css_class:'symbol'},
-      {glyph:'\'', code:0, off_glyph:'"', off_code:0, css_class:'symbol'},
+      {glyph:';', code:59, off_glyph:':', off_code:58, css_class:'symbol'},
+      {glyph:'\'', code:222, char_code:39, off_glyph:'"', off_code:34, css_class:'symbol'},
       {glyph:'↵', code:13, css_class:'enter'},
       {glyph:'PgDn', code:34, css_class:'page-down'},
       {glyph:'Shift', special:'shift', css_class:'right-shift'},
@@ -74,9 +74,9 @@ var onScreenKb = function() {
       {glyph:'B', code:66, css_class:'letter'},
       {glyph:'N', code:78, css_class:'letter'},
       {glyph:'M', code:77, css_class:'letter'},
-      {glyph:',', code:0, off_glyph:'<', off_code:0, css_class:'symbol'},
-      {glyph:'.', code:0, off_glyph:'>', off_code:0, css_class:'symbol'},
-      {glyph:'/', code:0, off_glyph:'?', off_code:0, css_class:'symbol'},
+      {glyph:',', code:188, char_code:44, off_glyph:'<', off_code:60, css_class:'symbol'},
+      {glyph:'.', code:190, char_code:46, off_glyph:'>', off_code:62, css_class:'symbol'},
+      {glyph:'/', code:191, char_code:47, off_glyph:'?', off_code:63, css_class:'symbol'},
       {glyph:'Shift', special:'shift', css_class:'left-shift'},
       {glyph:'End', code:35, css_class:'end'},
       {glyph:'Ctrl', special:'ctrl', css_class:'right-control'},
@@ -137,6 +137,29 @@ var onScreenKb = function() {
     _showSpecials();
     return ev;
   };
+  var _sendKeyPress = function(ev, ccode, offcode) {
+    if (ev.keyCode == 9 || ev.keyCode == 32) {
+      _termObj.keyPress(ev);
+      return;
+    }
+    if (!ev.ctrlKey && !ev.altKey && !ev.metaKey) {
+      if (ev.keyCode >= 65 && ev.keyCode <= 90) {
+        if (ev.shiftKey)
+          ev.charCode = ev.keyCode;
+        else
+          ev.charCode = ev.keyCode + 32;
+      }
+      if (offcode) {
+        if (ev.shiftKey) {
+          ev.charCode = offcode;
+        } else {
+          ev.charCode = ccode || ev.keyCode;
+        }
+      }
+    }
+    if (ev.charCode)
+      _termObj.keyPress(ev);
+  }
   _self.layout = function(newLayout) {
     if (typeof(newLayout) == 'object')
       _kbLayout = newLayout;
@@ -222,12 +245,14 @@ var onScreenKb = function() {
           }
         } else if (typeof(_kbLayout[i].code) === 'number') {
           // Normal keys
-          (function (kcode) {
+          (function (kcode, chcode, offcode) {
             keyEle.addEventListener('click', function() {
               _flashButton(this);
-              _termObj.keyDown(_reflectSpecials({keyCode:kcode}));
+              var ev = _reflectSpecials({keyCode:kcode});
+              _termObj.keyDown(ev);
+              _sendKeyPress(ev, chcode, offcode);
             });
-          })(_kbLayout[i].code);
+          })(_kbLayout[i].code, _kbLayout[i].char_code, _kbLayout[i].off_code);
         }
       }
     }
