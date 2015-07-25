@@ -6,22 +6,28 @@
 #keyboard {
   position: fixed;
   bottom: 0;
-  width: 768px;
+  width: 100%;
   list-style: none;
 }
 
 #keyboard > li {
   float: left;
-  margin: 0 5px 5px 0;
-  width: 42px;
+  margin: 0 0.6510416666666667% 0.6510416666666667% 0; /*5px/768*/
+  width: 5.46875%; /*42px/768*/
   height: 40px;
   line-height: 40px;
   text-align: center;
   background: rgba(55,55,55,.7);
   color: rgb(200,200,255);
   border: 1px solid #f9f9f9;
-  -moz-border-radius: 5px;
+  border-radius: 5px;
   -webkit-border-radius: 5px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #keyboard > li > .off-glyph {
@@ -32,44 +38,44 @@
 }
 
 #keyboard > li.function {
-  width:37px;
+  width:4.8177083333333336%; /*37px/768*/
   height:35px;
 }
 
 #keyboard > li.function.delete {
-  width:39px;
+  width:5.078125%; /*39px/768*/
 }
 
 #keyboard > li.function.escape {
-  width:39px;
+  width:5.078125%; /*39px/768*/
 }
 
 #keyboard > li.backspace {
-  width:59px;
+  width:7.682291666666667%; /*59px/768*/
 }
 
 #keyboard > li.tab {
-  width:59px;
+  width:7.682291666666667%; /*59px/768*/
 }
 
 #keyboard > li.caplock {
-  width:73px;
+  width:9.505208333333333%; /*73px/768*/
 }
 
 #keyboard > li.enter {
-  width:77px;
+  width:10.026041666666667%;/*77px/768*/
 }
 
 #keyboard > li.left-shift {
-  width:99px;
+  width:12.890625%;/*99px/768*/
 }
 
 #keyboard > li.right-shift {
-  width:100px;
+  width:13.020833333333334%;/*100px/768*/
 }
 
 #keyboard > li.space {
-  width:255px;
+  width:33.203125%;/*255px/768*/
 }
 
 #keyboard > li.arrow {

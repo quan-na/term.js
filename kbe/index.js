@@ -45,7 +45,7 @@ term = pty.fork(process.env.SHELL || 'sh', [], {
 });
 
 term.on('data', function(data) {
-  if (stream) stream.write('OUT: ' + data + '\n-\n');
+  //if (stream) stream.write('OUT: ' + data + '\n-\n');
   return !socket
     ? buff.push(data)
     : socket.emit('data', data);
@@ -142,7 +142,7 @@ io.sockets.on('connection', function(sock) {
   socket = sock;
 
   socket.on('data', function(data) {
-    if (stream) stream.write('IN: ' + data + '\n-\n');
+    //if (stream) stream.write('IN: ' + data + '\n-\n');
     //console.log(JSON.stringify(data));
     term.write(data);
   });

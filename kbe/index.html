@@ -27,7 +27,6 @@
 <script src="term.js"></script>
 <script src="oskb.js"></script>
 <link href="oskb.css" rel="stylesheet" type="text/css"/>
-<div id="term-id"></div>
 <div id="oskb-id"></div>
 <script>
 ;(function() {
@@ -50,7 +49,7 @@
         document.title = title;
       });
 
-      term.open(document.getElementById("term-id"));
+      term.open(document.body);
 
       term.write('\x1b[36m (______ <\\-/> ______) \x1b[m\r\n');
       term.write('\x1b[36m /_.-=-.\\| " |/.-=-._\\ \x1b[m\r\n');
@@ -69,8 +68,8 @@
       socket.on('disconnect', function() {
         term.destroy();
       });
+      onScreenKb().setTerm(term).render("oskb-id");
     });
-    onScreenKb().render("oskb-id");
   };
 }).call(this);
 </script>
