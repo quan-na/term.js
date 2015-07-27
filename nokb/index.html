@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<title>quanna's term.js</title>
+<!--
+  term.js
+  Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
+-->
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<style>
+  html {
+    background: #555;
+  }
+/*
+  .terminal {
+    float: left;
+    border: #000 solid 5px;
+    font-family: "DejaVu Sans Mono", "Liberation Mono", monospace;
+    font-size: 11px;
+    color: #f0f0f0;
+    background: #000;
+  }
+
+  .terminal-cursor {
+    color: #000;
+    background: #f0f0f0;
+  }*/
+</style>
+<script src="/socket.io/socket.io.js"></script>
+<script src="term.js"></script>
+</head>
+<body>
+<div id="oskb-id"></div>
+<script>
+;(function() {
+  window.onload = function() {
+    var socket = io.connect();
+    socket.on('connect', function() {
+      var term = new Terminal({
+        cols: 182,
+        rows: 50,
+        useStyle: true,
+        screenKeys: true,
+        cursorBlink: false
+      });
+
+      term.on('data', function(data) {
+        socket.emit('data', data);
+      });
+
+      term.on('title', function(title) {
+        document.title = title;
+      });
+
+      term.open(document.body);
+
+      term.write('\x1b[32m (______ <\\-/> ______) \x1b[m\r\n');
+      term.write('\x1b[32m /_.-=-.\\| " |/.-=-._\\ \x1b[m\r\n');
+      term.write('\x1b[32m  /_    \\(o_o)/    _\\ \x1b[m\r\n');
+      term.write('\x1b[32m   /_  /\\/ _ \\/\\  _\\ \x1b[m\r\n');
+      term.write('\x1b[32m     \\/ | / \\ | \\/ \x1b[m\r\n');
+      term.write('\x1b[32m       /((( )))\\ \x1b[m\r\n');
+      term.write('\x1b[32m     __\\ \\___/ /__ \x1b[m\r\n');
+      term.write('\x1b[32m    ((---\'   \'---)) \x1b[m\r\n\r\n');
+      term.write('\x1b[36mWelcome to quanna\'s term.js\x1b[m\r\n');
+
+      socket.on('data', function(data) {
+        term.write(data);
+      });
+
+      socket.on('disconnect', function() {
+        term.destroy();
+      });
+    });
+  };
+}).call(this);
+</script>
+</body>
+</html>
